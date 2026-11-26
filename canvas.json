@@ -1,51 +1,11 @@
 {
   "artboards": [
-    {
-      "file": "Main.dc.html",
-      "x": 0,
-      "y": 0,
-      "w": 1440,
-      "h": 2900,
-      "title": "LIORA home page",
-      "expand": "fill",
-      "is_interactive": true
-    },
-    {
-      "file": "Artboard-v1ky.dc.html",
-      "x": 0,
-      "y": 0,
-      "w": 1440,
-      "h": 1250,
-      "title": "Earrings",
-      "expand": "fill",
-      "page": "page-1bppvx",
-      "is_interactive": true,
-      "handmade": true
-    },
-    {
-      "file": "Necklaces.dc.html",
-      "x": 1520,
-      "y": 0,
-      "w": 1440,
-      "h": 1250,
-      "title": "Necklaces",
-      "expand": "fill",
-      "page": "page-1bppvx",
-      "is_interactive": true
-    }
+    {"file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 2900, "title": "LIORA home page", "expand": "fill", "is_interactive": true},
+    {"file": "Artboard-v1ky.dc.html", "x": 0, "y": 0, "w": 1440, "h": 1250, "title": "Earrings", "expand": "fill", "page": "page-1bppvx", "is_interactive": true, "handmade": true},
+    {"file": "Necklaces.dc.html", "x": 1520, "y": 0, "w": 1440, "h": 1250, "title": "Necklaces", "expand": "fill", "page": "page-1bppvx", "is_interactive": true},
+    {"file": "Bracelets.dc.html", "x": 3040, "y": 0, "w": 1440, "h": 1150, "title": "Bracelets", "expand": "fill", "page": "page-1bppvx", "is_interactive": true},
+    {"file": "Rings.dc.html", "x": 4560, "y": 0, "w": 1440, "h": 1100, "title": "Rings", "expand": "fill", "page": "page-1bppvx", "is_interactive": true}
   ],
-  "launch": {
-    "view": "focused",
-    "file": "Main.dc.html"
-  },
-  "pages": [
-    {
-      "id": "page-1",
-      "name": "Page 1"
-    },
-    {
-      "id": "page-1bppvx",
-      "name": "Page 2"
-    }
-  ]
+  "launch": {"view": "focused", "file": "Main.dc.html"},
+  "pages": [{"id": "page-1", "name": "Page 1"}, {"id": "page-1bppvx", "name": "Page 2"}]
 }

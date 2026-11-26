@@ -11,39 +11,89 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Jost:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap">
 <style>
 body{margin:0;background:#4A0912}
-a{text-decoration:none}
-a:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid #F2DDA4;outline-offset:3px}
+button,input,textarea{font-family:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #F2DDA4;outline-offset:3px}
+.root{background:#4A0912;color:#FFF1D6;font-family:'Jost',system-ui,sans-serif;font-size:17px;line-height:1.6;max-width:1440px;margin:0 auto;min-height:100%}
+.root[dir="rtl"]{font-family:'Cairo',system-ui,sans-serif}
+.root[dir="rtl"] *{letter-spacing:0 !important}
+.head{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0}
+.root[dir="rtl"] .head{font-family:'Cairo',system-ui,sans-serif;font-weight:600}
+.pad{padding-inline:clamp(20px,5vw,72px)}
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-block:20px;border-bottom:1px solid rgba(216,178,90,.35)}
+.logo{background:none;border:0;cursor:pointer;color:#D8B25A;font-size:34px;letter-spacing:.32em;font-weight:600;padding:0;font-family:'Cormorant Garamond',Georgia,serif}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+.navbtn{background:none;border:0;border-bottom:1px solid transparent;color:#FFF1D6;font-size:inherit;letter-spacing:inherit;text-transform:inherit;padding:12px 0;cursor:pointer}
+.navbtn.on{color:#D8B25A;border-bottom-color:#D8B25A}
+.tools{display:flex;align-items:center;gap:12px}
+.pill{border:1px solid #D8B25A;color:#D8B25A;background:transparent;padding:10px 18px;font-size:14px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}
+.badge{display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:11px;background:#D8B25A;color:#4A0912;font-size:12px;font-weight:600;margin-inline-start:8px}
+.eyebrow{font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:#D8B25A}
+.solid{display:inline-block;background:#D8B25A;color:#4A0912;border:0;padding:15px 34px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:14px;cursor:pointer;text-decoration:none;text-align:center}
+.ghost{display:inline-block;background:transparent;border:1px solid #D8B25A;color:#D8B25A;padding:14px 34px;letter-spacing:.1em;text-transform:uppercase;font-size:14px;cursor:pointer;text-decoration:none;text-align:center}
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:56px;padding-block:64px}
+.section{padding-block:72px;display:flex;flex-direction:column;gap:40px}
+.secthead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 32px}
+.h2{font-size:clamp(34px,4vw,52px);color:#FFF1D6}
+.muted{color:#EBD3B3}
+.grid{display:flex;flex-wrap:wrap;gap:32px 24px}
+.card{flex:1 1 240px;max-width:360px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.imgbox{overflow:hidden;border:1px solid rgba(216,178,90,.45);background:#38060D}
+.imgbox img{width:100%;height:100%;object-fit:cover;display:block}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pname{font-size:26px;line-height:1.25}
+.price{color:#D8B25A;white-space:nowrap}
+.add{background:transparent;border:1px solid #D8B25A;color:#D8B25A;padding:14px;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;min-height:48px}
+.stepper{display:flex;align-items:center;justify-content:space-between;border:1px solid #D8B25A;color:#D8B25A;min-height:48px}
+.stepper button{width:52px;height:46px;background:none;border:0;color:#D8B25A;font-size:22px;cursor:pointer}
+.stepper span{font-weight:500}
+.catcard{flex:1 1 220px;max-width:360px;min-width:0;display:flex;flex-direction:column;gap:14px;background:none;border:0;padding:0;color:#FFF1D6;cursor:pointer;text-align:start}
+.catname{font-size:30px}
+.story{background:#D8B25A;color:#4A0912;padding-block:80px;display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center}
+.cols{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;padding-block:48px 96px}
+.line{display:flex;gap:16px;align-items:center;padding-block:16px;border-bottom:1px solid rgba(216,178,90,.25)}
+.thumb{width:80px;height:80px;flex:0 0 auto;overflow:hidden;border:1px solid rgba(216,178,90,.45)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.field{width:100%;box-sizing:border-box;padding:14px 16px;background:#38060D;border:1px solid rgba(216,178,90,.6);color:#FFF1D6;font-size:16px}
+.label{display:block;font-size:14px;color:#D8B25A;margin-bottom:6px}
+.err{color:#FFD2D2;background:rgba(179,24,43,.45);border:1px solid #D8B25A;padding:12px 16px}
+.footer{border-top:1px solid rgba(216,178,90,.35);padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;font-size:14px}
 </style>
 </helmet>
-<div style="background: #4A0912; color: #FFF1D6; font-family: 'Jost', system-ui, sans-serif; font-size: 17px; line-height: 1.6; display: flex; flex-direction: column; max-width: 1440px; margin: 0 auto">
 
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding: 28px clamp(20px, 5vw, 72px); border-bottom: 1px solid rgba(216,178,90,0.35)">
-<a href="#top" style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 34px; letter-spacing: 0.32em; color: #D8B25A">LIORA</a>
-<nav style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase">
-<a href="#pieces" style="color: #FFF1D6; padding: 10px 0">Pieces</a>
-<a href="#featured" style="color: #FFF1D6; padding: 10px 0">Featured</a>
-<a href="#story" style="color: #FFF1D6; padding: 10px 0">Our story</a>
-<a href="#join" style="color: #D8B25A; padding: 10px 0">Join us</a>
+<div class="root" dir="{{dir}}">
+
+<div class="topbar pad">
+<button type="button" class="logo" onClick="{{goHome}}">LIORA</button>
+<nav class="nav">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="5">
+<button type="button" class="{{n.cls}}" onClick="{{n.go}}">{{n.label}}</button>
+</sc-for>
 </nav>
+<div class="tools">
+<button type="button" class="pill" onClick="{{toggleLang}}">{{t.langBtn}}</button>
+<button type="button" class="pill" onClick="{{goCart}}" aria-label="{{t.cart}}">{{t.cart}}<sc-if value="{{hasItems}}" hint-placeholder-val="{{ true }}"><span class="badge">{{cartCount}}</span></sc-if></button>
+</div>
 </div>
 
-<div id="top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding: 72px clamp(20px, 5vw, 72px)">
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<div>
+<div class="hero pad">
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 28px; align-items: flex-start">
-<div style="font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #D8B25A">Women's accessories</div>
-<h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(46px, 6.4vw, 92px); line-height: 1.02; text-wrap: balance; color: #FFF1D6">Small gold.<br><em style="color: #F2DDA4">Strong presence.</em></h1>
-<p style="margin: 0; max-width: 480px; color: #EBD3B3">Earrings, necklaces, bracelets and rings in red and gold, made to be worn every day and gifted often.</p>
+<div class="eyebrow">{{t.heroEyebrow}}</div>
+<h1 class="head" style="font-size: clamp(44px, 6.4vw, 88px); line-height: 1.08; text-wrap: balance">{{t.hero1}}<br><span style="color: #F2DDA4">{{t.hero2}}</span></h1>
+<p class="muted" style="margin: 0; max-width: 480px">{{t.heroText}}</p>
 <div style="display: flex; flex-wrap: wrap; gap: 16px">
-<a href="#featured" style="display: inline-block; background: #D8B25A; color: #4A0912; padding: 16px 36px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-size: 14px">Shop the collection</a>
-<a href="#pieces" style="display: inline-block; border: 1px solid #D8B25A; color: #D8B25A; padding: 15px 36px; letter-spacing: 0.12em; text-transform: uppercase; font-size: 14px">Browse by piece</a>
+<button type="button" class="solid" onClick="{{scrollFeatured}}">{{t.shopBtn}}</button>
+<button type="button" class="ghost" onClick="{{scrollPieces}}">{{t.browseBtn}}</button>
 </div>
 </div>
 <div style="flex: 1 1 340px; min-width: 0; display: flex; justify-content: center">
-<div style="width: 100%; max-width: 460px; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 28%, #B3182B 0%, #7A0F1E 45%, #4A0912 80%); border: 1px solid #D8B25A; box-shadow: 0 0 0 14px rgba(216,178,90,0.12), 0 0 0 15px rgba(216,178,90,0.4); display: flex; align-items: center; justify-content: center">
-<svg viewBox="0 0 400 400" role="img" aria-label="Gold pendant necklace" style="width: 82%; height: auto">
+<div style="width: 100%; max-width: 440px; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 28%, #B3182B 0%, #7A0F1E 45%, #4A0912 80%); border: 1px solid #D8B25A; box-shadow: 0 0 0 14px rgba(216,178,90,0.12), 0 0 0 15px rgba(216,178,90,0.4); display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 400 400" role="img" aria-label="LIORA" style="width: 82%; height: auto">
 <path d="M64 110 C 84 300, 316 300, 336 110" fill="none" stroke="#D8B25A" stroke-width="2.5"></path>
 <path d="M64 110 C 84 300, 316 300, 336 110" fill="none" stroke="#F2DDA4" stroke-width="0.8" stroke-dasharray="2 7"></path>
 <line x1="200" y1="258" x2="200" y2="284" stroke="#D8B25A" stroke-width="2.5"></line>
@@ -56,150 +106,331 @@ a:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid #F2DD
 </div>
 </div>
 
-<div id="pieces" style="padding: 72px clamp(20px, 5vw, 72px); border-top: 1px solid rgba(216,178,90,0.35); display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px">
-<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4vw, 52px); color: #FFF1D6">Shop by piece</h2>
-<div style="color: #EBD3B3">Four ways to wear LIORA</div>
+<div id="pieces-anchor" class="section pad" style="border-top: 1px solid rgba(216,178,90,0.35)">
+<div class="secthead">
+<h2 class="head h2">{{t.piecesTitle}}</h2>
+<div class="muted">{{t.piecesSub}}</div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
-
-<a href="Artboard-v1ky.dc.html" style="flex: 1 1 220px; min-width: 0; border: 1px solid rgba(216,178,90,0.45); padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: #FFF1D6">
-<svg viewBox="0 0 120 120" aria-hidden="true" style="width: 96px; height: 96px" fill="none" stroke="#D8B25A" stroke-width="2.5" stroke-linecap="round">
-<circle cx="38" cy="22" r="6"></circle><path d="M38 28 V40"></path><path d="M38 40 C 22 56, 26 82, 38 92 C 50 82, 54 56, 38 40 Z"></path>
-<circle cx="82" cy="22" r="6"></circle><path d="M82 28 V40"></path><path d="M82 40 C 66 56, 70 82, 82 92 C 94 82, 98 56, 82 40 Z"></path>
-</svg>
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 500">Earrings</div>
-<div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #D8B25A">Shop earrings</div>
-</a>
-
-<a href="Necklaces.dc.html" style="flex: 1 1 220px; min-width: 0; border: 1px solid rgba(216,178,90,0.45); padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: #FFF1D6">
-<svg viewBox="0 0 120 120" aria-hidden="true" style="width: 96px; height: 96px" fill="none" stroke="#D8B25A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-<path d="M18 24 C 26 88, 94 88, 102 24"></path><path d="M60 78 V88"></path><path d="M60 88 L72 100 L60 116 L48 100 Z"></path>
-</svg>
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 500">Necklaces</div>
-<div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #D8B25A">Shop necklaces</div>
-</a>
-
-<a href="#featured" style="flex: 1 1 220px; min-width: 0; border: 1px solid rgba(216,178,90,0.45); padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: #FFF1D6">
-<svg viewBox="0 0 120 120" aria-hidden="true" style="width: 96px; height: 96px" fill="none" stroke="#D8B25A" stroke-width="2.5" stroke-linecap="round">
-<ellipse cx="60" cy="60" rx="44" ry="30"></ellipse><ellipse cx="60" cy="60" rx="34" ry="21"></ellipse><circle cx="60" cy="30" r="5"></circle><circle cx="24" cy="48" r="3"></circle><circle cx="96" cy="48" r="3"></circle>
-</svg>
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 500">Bracelets</div>
-<div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #D8B25A">Shop bracelets</div>
-</a>
-
-<a href="#featured" style="flex: 1 1 220px; min-width: 0; border: 1px solid rgba(216,178,90,0.45); padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: #FFF1D6">
-<svg viewBox="0 0 120 120" aria-hidden="true" style="width: 96px; height: 96px" fill="none" stroke="#D8B25A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="60" cy="74" r="28"></circle><circle cx="60" cy="74" r="21"></circle><path d="M48 38 L60 20 L72 38 L60 50 Z"></path>
-</svg>
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 500">Rings</div>
-<div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #D8B25A">Shop rings</div>
-</a>
-
+<div class="grid">
+<sc-for list="{{covers}}" as="c" hint-placeholder-count="4">
+<button type="button" class="catcard" onClick="{{c.go}}">
+<div class="imgbox" style="aspect-ratio: 4 / 5; width: 100%"><img src="{{c.img}}" alt="{{c.title}}" style="object-position: {{c.pos}}"></div>
+<div class="head catname">{{c.title}}</div>
+<div class="eyebrow" style="font-size: 13px">{{t.shopNow}}</div>
+</button>
+</sc-for>
 </div>
 </div>
 
-<div id="featured" style="padding: 72px clamp(20px, 5vw, 72px); background: #38060D; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px">
-<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4vw, 52px); color: #FFF1D6">Featured pieces</h2>
-<div style="color: #EBD3B3">Add your own prices where marked</div>
+<div id="featured-anchor" class="section pad" style="background: #38060D">
+<div class="secthead">
+<h2 class="head h2">{{t.featTitle}}</h2>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
-
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="aspect-ratio: 4 / 5; background: radial-gradient(circle at 50% 35%, #9E1428 0%, #5C0A14 75%); border: 1px solid rgba(216,178,90,0.45); display: flex; align-items: center; justify-content: center">
-<svg viewBox="0 0 120 120" role="img" aria-label="Gold drop earrings" style="width: 55%; height: auto" fill="none" stroke="#D8B25A" stroke-width="2" stroke-linecap="round">
-<circle cx="38" cy="22" r="6"></circle><path d="M38 28 V40"></path><path d="M38 40 C 22 56, 26 82, 38 92 C 50 82, 54 56, 38 40 Z" fill="#D8B25A" fill-opacity="0.25"></path>
-<circle cx="82" cy="22" r="6"></circle><path d="M82 28 V40"></path><path d="M82 40 C 66 56, 70 82, 82 92 C 94 82, 98 56, 82 40 Z" fill="#D8B25A" fill-opacity="0.25"></path>
-</svg>
+<div class="grid">
+<sc-for list="{{featured}}" as="p" hint-placeholder-count="4">
+<div class="card">
+<div class="imgbox" style="aspect-ratio: 3 / 4"><img src="{{p.img}}" alt="{{p.name}}" style="object-position: {{p.pos}}"></div>
+<div class="row"><div class="head pname">{{p.name}}</div><div class="price">{{p.price}}</div></div>
+<sc-if value="{{p.notInCart}}" hint-placeholder-val="{{ true }}"><button type="button" class="add" onClick="{{p.add}}">{{t.add}}</button></sc-if>
+<sc-if value="{{p.inCart}}" hint-placeholder-val="{{ false }}"><div class="stepper"><button type="button" onClick="{{p.dec}}" aria-label="{{t.dec}}">−</button><span>{{p.qtyLabel}}</span><button type="button" onClick="{{p.inc}}" aria-label="{{t.inc}}">+</button></div></sc-if>
 </div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 500">Aura Drop Earrings</div>
-<div style="color: #D8B25A; white-space: nowrap">[Price]</div>
-</div>
-<button type="button" style="background: transparent; border: 1px solid #D8B25A; color: #D8B25A; padding: 14px; font: 500 13px 'Jost', system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">Add to bag</button>
-</div>
-
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="aspect-ratio: 4 / 5; background: radial-gradient(circle at 50% 35%, #9E1428 0%, #5C0A14 75%); border: 1px solid rgba(216,178,90,0.45); display: flex; align-items: center; justify-content: center">
-<svg viewBox="0 0 120 120" role="img" aria-label="Gold pendant necklace" style="width: 55%; height: auto" fill="none" stroke="#D8B25A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M18 24 C 26 88, 94 88, 102 24"></path><path d="M60 78 V88"></path><path d="M60 88 L72 100 L60 116 L48 100 Z" fill="#D8B25A" fill-opacity="0.35"></path>
-</svg>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 500">Sol Pendant Necklace</div>
-<div style="color: #D8B25A; white-space: nowrap">[Price]</div>
-</div>
-<button type="button" style="background: transparent; border: 1px solid #D8B25A; color: #D8B25A; padding: 14px; font: 500 13px 'Jost', system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">Add to bag</button>
-</div>
-
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="aspect-ratio: 4 / 5; background: radial-gradient(circle at 50% 35%, #9E1428 0%, #5C0A14 75%); border: 1px solid rgba(216,178,90,0.45); display: flex; align-items: center; justify-content: center">
-<svg viewBox="0 0 120 120" role="img" aria-label="Gold cuff bracelet" style="width: 55%; height: auto" fill="none" stroke="#D8B25A" stroke-width="2" stroke-linecap="round">
-<ellipse cx="60" cy="60" rx="44" ry="30"></ellipse><ellipse cx="60" cy="60" rx="34" ry="21"></ellipse><circle cx="60" cy="30" r="5" fill="#D8B25A" fill-opacity="0.35"></circle><circle cx="24" cy="48" r="3"></circle><circle cx="96" cy="48" r="3"></circle>
-</svg>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 500">Ember Cuff Bracelet</div>
-<div style="color: #D8B25A; white-space: nowrap">[Price]</div>
-</div>
-<button type="button" style="background: transparent; border: 1px solid #D8B25A; color: #D8B25A; padding: 14px; font: 500 13px 'Jost', system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">Add to bag</button>
-</div>
-
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="aspect-ratio: 4 / 5; background: radial-gradient(circle at 50% 35%, #9E1428 0%, #5C0A14 75%); border: 1px solid rgba(216,178,90,0.45); display: flex; align-items: center; justify-content: center">
-<svg viewBox="0 0 120 120" role="img" aria-label="Gold ring with a faceted stone" style="width: 55%; height: auto" fill="none" stroke="#D8B25A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="60" cy="74" r="28"></circle><circle cx="60" cy="74" r="21"></circle><path d="M48 38 L60 20 L72 38 L60 50 Z" fill="#D8B25A" fill-opacity="0.35"></path>
-</svg>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 500">Regal Stone Ring</div>
-<div style="color: #D8B25A; white-space: nowrap">[Price]</div>
-</div>
-<button type="button" style="background: transparent; border: 1px solid #D8B25A; color: #D8B25A; padding: 14px; font: 500 13px 'Jost', system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">Add to bag</button>
-</div>
-
+</sc-for>
 </div>
 </div>
 
-<div id="story" style="background: #D8B25A; color: #4A0912; padding: 80px clamp(20px, 5vw, 72px); display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: center">
+<div class="story pad">
 <div style="flex: 1 1 320px; min-width: 0">
-<div style="font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 16px">Our story</div>
-<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: clamp(36px, 4.6vw, 64px); line-height: 1.08; text-wrap: balance">Red for the pulse. Gold for the shine.</h2>
+<div class="eyebrow" style="color: #4A0912; margin-bottom: 16px">{{t.storyEyebrow}}</div>
+<h2 class="head" style="font-weight: 600; font-size: clamp(36px, 4.6vw, 62px); line-height: 1.12; text-wrap: balance">{{t.storyTitle}}</h2>
 </div>
 <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px; font-size: 18px">
-<p style="margin: 0">LIORA makes accessories for women who like to be noticed without saying a word. Each piece pairs a warm gold finish with a deep red accent.</p>
-<p style="margin: 0">Wear one piece with a plain outfit, or stack several for an evening out. Every design is made to move easily from the workday to the occasion.</p>
+<p style="margin: 0">{{t.story1}}</p>
+<p style="margin: 0">{{t.story2}}</p>
 </div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isCat}}" hint-placeholder-val="{{ false }}">
+<div>
+<div class="pad" style="padding-block: 64px 16px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
+<div class="eyebrow">{{t.heroEyebrow}}</div>
+<h1 class="head" style="font-size: clamp(44px, 6vw, 80px); line-height: 1.1">{{catTitle}}</h1>
+<p class="muted" style="margin: 0; max-width: 520px">{{catIntro}}</p>
+</div>
+<div class="pad grid" style="padding-block: 32px 96px">
+<sc-for list="{{catItems}}" as="p" hint-placeholder-count="4">
+<div class="card">
+<div class="imgbox" style="aspect-ratio: {{p.ratio}}"><img src="{{p.img}}" alt="{{p.name}}" style="object-position: {{p.pos}}"></div>
+<div class="row"><div class="head pname">{{p.name}}</div><div class="price">{{p.price}}</div></div>
+<sc-if value="{{p.notInCart}}" hint-placeholder-val="{{ true }}"><button type="button" class="add" onClick="{{p.add}}">{{t.add}}</button></sc-if>
+<sc-if value="{{p.inCart}}" hint-placeholder-val="{{ false }}"><div class="stepper"><button type="button" onClick="{{p.dec}}" aria-label="{{t.dec}}">−</button><span>{{p.qtyLabel}}</span><button type="button" onClick="{{p.inc}}" aria-label="{{t.inc}}">+</button></div></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isCart}}" hint-placeholder-val="{{ false }}">
+<div class="pad" style="padding-block: 56px 0">
+<h1 class="head" style="font-size: clamp(40px, 5vw, 64px); line-height: 1.1">{{t.cartTitle}}</h1>
+
+<sc-if value="{{emptyCart}}" hint-placeholder-val="{{ false }}">
+<div style="padding-block: 40px 96px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start">
+<p class="muted" style="margin: 0">{{t.emptyCart}}</p>
+<button type="button" class="solid" onClick="{{goHome}}">{{t.continueShop}}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{hasItems}}" hint-placeholder-val="{{ true }}">
+<div class="cols" style="padding-inline: 0">
+<div style="flex: 1 1 420px; min-width: 0">
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2">
+<div class="line">
+<div class="thumb"><img src="{{l.img}}" alt="{{l.name}}"></div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<div class="head pname" style="font-size: 22px">{{l.name}}</div>
+<div class="price">{{l.unit}}</div>
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+<div class="stepper" style="width: 150px"><button type="button" onClick="{{l.dec}}" aria-label="{{t.dec}}">−</button><span>{{l.qtyLabel}}</span><button type="button" onClick="{{l.inc}}" aria-label="{{t.inc}}">+</button></div>
+<button type="button" onClick="{{l.remove}}" style="background: none; border: 0; color: #EBD3B3; text-decoration: underline; cursor: pointer; padding: 12px 0">{{t.remove}}</button>
+</div>
+</div>
+<div class="price" style="font-weight: 500">{{l.lineTotal}}</div>
+</div>
+</sc-for>
+<div class="row" style="padding-block: 24px; align-items: center">
+<div class="head" style="font-size: 28px">{{t.total}}</div>
+<div class="price" style="font-size: 28px; font-weight: 500">{{totalText}}</div>
+</div>
+<button type="button" class="ghost" onClick="{{goHome}}">{{t.continueShop}}</button>
 </div>
 
-<div id="join" style="padding: 80px clamp(20px, 5vw, 72px); display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
-<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4vw, 52px); text-wrap: balance">Be first to see new pieces</h2>
-<p style="margin: 0; max-width: 480px; color: #EBD3B3">Join the LIORA list for new arrivals and early access to every collection.</p>
-<form style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 560px">
-<label for="liora-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
-<input id="liora-email" type="email" placeholder="Your email address" style="flex: 1 1 260px; min-width: 0; box-sizing: border-box; padding: 16px 18px; background: #38060D; border: 1px solid rgba(216,178,90,0.6); color: #FFF1D6; font: 400 16px 'Jost', system-ui, sans-serif">
-<button type="button" style="flex: 0 0 auto; background: #D8B25A; color: #4A0912; border: none; padding: 16px 32px; font: 500 14px 'Jost', system-ui, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer">Join</button>
-</form>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px; border: 1px solid rgba(216,178,90,0.45); padding: 28px">
+<h2 class="head" style="font-size: 30px">{{t.detailsTitle}}</h2>
+<div>
+<label class="label" for="f-name">{{t.fName}}</label>
+<input id="f-name" class="field" type="text" autocomplete="name" value="{{fName}}" onInput="{{onName}}">
 </div>
+<div>
+<label class="label" for="f-phone">{{t.fPhone}}</label>
+<input id="f-phone" class="field" type="tel" autocomplete="tel" value="{{fPhone}}" onInput="{{onPhone}}">
+</div>
+<div>
+<label class="label" for="f-address">{{t.fAddress}}</label>
+<textarea id="f-address" class="field" rows="3" autocomplete="street-address" value="{{fAddress}}" onInput="{{onAddress}}"></textarea>
+</div>
+<div>
+<label class="label" for="f-notes">{{t.fNotes}}</label>
+<input id="f-notes" class="field" type="text" value="{{fNotes}}" onInput="{{onNotes}}">
+</div>
+<sc-if value="{{showError}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert">{{t.errMsg}}</div></sc-if>
+<button type="button" class="solid" onClick="{{placeOrder}}">{{completeLabel}}</button>
+<div class="muted" style="font-size: 14px">{{t.completeNote}}</div>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
 
-<div style="border-top: 1px solid rgba(216,178,90,0.35); padding: 40px clamp(20px, 5vw, 72px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px">
-<div style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 28px; letter-spacing: 0.32em; color: #D8B25A">LIORA</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px">
-<a href="#pieces" style="color: #EBD3B3; padding: 10px 0">Pieces</a>
-<a href="#featured" style="color: #EBD3B3; padding: 10px 0">Featured</a>
-<a href="#story" style="color: #EBD3B3; padding: 10px 0">Our story</a>
-<a href="#join" style="color: #EBD3B3; padding: 10px 0">Join us</a>
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div class="pad" style="padding-block: 56px 96px; display: flex; flex-direction: column; gap: 28px; max-width: 760px">
+<h1 class="head" style="font-size: clamp(40px, 5vw, 64px); line-height: 1.1">{{doneTitle}}</h1>
+<p class="muted" style="margin: 0; font-size: 19px">{{doneText}}</p>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<a class="solid" href="{{waLink}}" target="_blank" rel="noopener">{{t.sendWa}}</a>
+<button type="button" class="ghost" onClick="{{copyOrder}}">{{copyLabel}}</button>
 </div>
-<div style="font-size: 14px; color: #EBD3B3">© 2026 LIORA. All rights reserved.</div>
+</sc-if>
+<div style="border: 1px solid rgba(216,178,90,0.45); padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="head" style="font-size: 26px">{{t.summary}}</h2>
+<label class="label" for="order-text" style="margin: 0">{{t.orderText}}</label>
+<textarea id="order-text" class="field" rows="10" readonly value="{{orderText}}"></textarea>
+</div>
+<div><button type="button" class="ghost" onClick="{{newOrder}}">{{t.backShop}}</button></div>
+</div>
+</sc-if>
+
+<div class="footer pad">
+<div class="head" style="font-size: 26px; letter-spacing: 0.32em; color: #D8B25A; font-weight: 600">LIORA</div>
+<div class="muted">{{t.rights}}</div>
 </div>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
 class Component extends DCLogic {
 renderVals() {
-return {};
+const s = this.state || {};
+const lang = s.lang || 'en';
+const ar = lang === 'ar';
+const view = s.view || 'home';
+const cat = s.cat || 'earrings';
+const cart = s.cart || {};
+const WHATSAPP_NUMBER = '201096889335'; // WhatsApp number with country code, digits only
+const abs = (u) => { try { return new URL(u, window.location.href).href; } catch (e) { return u; } };
+
+const TEXT = {
+en: {
+langBtn: 'العربية', home: 'Home', earrings: 'Earrings', necklaces: 'Necklaces', bracelets: 'Bracelets', rings: 'Rings',
+cart: 'Cart', add: 'Add to bag', inc: 'Add one', dec: 'Remove one', remove: 'Remove',
+heroEyebrow: "Women's accessories", hero1: 'Small gold.', hero2: 'Strong presence.',
+heroText: 'Earrings, necklaces, bracelets and rings in red and gold, made to be worn every day and gifted often.',
+shopBtn: 'Shop the collection', browseBtn: 'Browse by piece',
+piecesTitle: 'Shop by piece', piecesSub: 'Four ways to wear LIORA', shopNow: 'Shop now', featTitle: 'Featured pieces',
+storyEyebrow: 'Our story', storyTitle: 'Red for the pulse. Gold for the shine.',
+story1: 'LIORA makes accessories for women who like to be noticed without saying a word. Each piece pairs a warm gold finish with a deep red accent.',
+story2: 'Wear one piece with a plain outfit, or stack several for an evening out. Every design is made to move easily from the workday to the occasion.',
+cartTitle: 'Your cart', emptyCart: 'Your cart is empty.', continueShop: 'Continue shopping', total: 'Total',
+detailsTitle: 'Delivery details', fName: 'Full name', fPhone: 'Phone number', fAddress: 'Delivery address', fNotes: 'Notes (optional)',
+errMsg: 'Please enter your name, phone number and address.', complete: 'Complete order',
+completeNote: 'We receive your order right away and will contact you to confirm it.',
+doneTitle: 'Almost done!', doneText: 'Send your order to us on WhatsApp so we can confirm it and arrange delivery.',
+sendWa: 'Send order on WhatsApp', copyOrder: 'Copy order text', copied: 'Copied', summary: 'Order summary', orderText: 'Order text',
+backShop: 'Back to shop', rights: '© 2026 LIORA. All rights reserved.',
+sentTitle: 'Order received!', sentText: 'Thank you! We got your order and will contact you on your phone number to confirm delivery.', sending: 'Sending...'
+},
+ar: {
+langBtn: 'English', home: 'الرئيسية', earrings: 'الحلق', necklaces: 'العقود', bracelets: 'الأساور', rings: 'الخواتم',
+cart: 'العربة', add: 'أضيفي للعربة', inc: 'زيادة واحدة', dec: 'إنقاص واحدة', remove: 'حذف',
+heroEyebrow: 'إكسسوارات نسائية', hero1: 'ذهب صغير.', hero2: 'حضور كبير.',
+heroText: 'حلق وعقود وأساور وخواتم بالأحمر والذهبي، تتلبس كل يوم وتتهدى كتير.',
+shopBtn: 'تسوقي المجموعة', browseBtn: 'تصفحي حسب القطعة',
+piecesTitle: 'تسوقي حسب القطعة', piecesSub: 'أربع طرق لارتداء ليورا', shopNow: 'تسوقي الآن', featTitle: 'قطع مميزة',
+storyEyebrow: 'قصتنا', storyTitle: 'الأحمر للنبض. والذهبي للبريق.',
+story1: 'ليورا بتصمم إكسسوارات للبنات اللي بيلفتوا النظر من غير ما يتكلموا. كل قطعة بتجمع بين لمعة الذهبي ولمسة الأحمر العميق.',
+story2: 'البسي قطعة واحدة مع لبس بسيط، أو كوّني أكتر من قطعة للسهرة. كل تصميم بيناسب الشغل والمناسبات.',
+cartTitle: 'عربة التسوق', emptyCart: 'عربة التسوق فاضية.', continueShop: 'كملي التسوق', total: 'الإجمالي',
+detailsTitle: 'بيانات التوصيل', fName: 'الاسم بالكامل', fPhone: 'رقم التليفون', fAddress: 'عنوان التوصيل', fNotes: 'ملاحظات (اختياري)',
+errMsg: 'برجاء إدخال الاسم ورقم التليفون والعنوان.', complete: 'إتمام الطلب',
+completeNote: 'هيوصلنا طلبك فوراً وهنتواصل معاكي لتأكيده.',
+doneTitle: 'باقي خطوة واحدة!', doneText: 'ابعتي طلبك لينا على واتساب عشان نأكده ونرتب التوصيل.',
+sendWa: 'إرسال الطلب على واتساب', copyOrder: 'نسخ نص الطلب', copied: 'تم النسخ', summary: 'ملخص الطلب', orderText: 'نص الطلب',
+backShop: 'العودة للتسوق', rights: '© 2026 ليورا. جميع الحقوق محفوظة.',
+sentTitle: 'وصلنا طلبك!', sentText: 'شكراً ليكي! وصلنا طلبك وهنتواصل معاكي على رقم التليفون لتأكيد التوصيل.', sending: 'جاري الإرسال...'
+}
+};
+const t = ar ? TEXT.ar : TEXT.en;
+
+const U = './assets/';
+const P = [
+{ id: 'e1', cat: 'earrings', en: 'Pearl Hoop Earrings', ar: 'حلق دائري باللؤلؤ', price: 80, img: U + '1bc278c1c1f458147601a8c5267426bc.jpg', pos: '50% 55%', ratio: '3 / 4' },
+{ id: 'e2', cat: 'earrings', en: 'Pearl Leaf Studs', ar: 'حلق ورقة باللؤلؤ', price: 80, img: U + '906f1ea648c9a9e7f01180689771572f.jpg', pos: '50% 55%', ratio: '3 / 4' },
+{ id: 'e3', cat: 'earrings', en: 'Pearl Wave Studs', ar: 'حلق موجة باللؤلؤ', price: 80, img: U + '841ad2d97b2dce6ceecc81114ff7bc36.jpg', pos: '50% 55%', ratio: '3 / 4' },
+{ id: 'e4', cat: 'earrings', en: 'Twin Pearl Swirls', ar: 'حلق لؤلؤتين حلزوني', price: 80, img: U + 'f44a618d221e3a1eb59b0e6445ec11c2.jpg', pos: '50% 55%', ratio: '3 / 4' },
+{ id: 'n1', cat: 'necklaces', en: 'Rose Crystal Set', ar: 'طقم كريستال وردي', price: 120, img: U + '958a0ebbe404d78e9226252efad288fa.jpg', pos: '50% 50%', ratio: '3 / 4' },
+{ id: 'n2', cat: 'necklaces', en: 'Stag Pendant Necklace', ar: 'عقد بدلاية الغزال', price: 120, img: U + '20fa0d9741c6d28d92ec2b394c74cda6.jpg', pos: '50% 50%', ratio: '3 / 4' },
+{ id: 'n3', cat: 'necklaces', en: 'Sapphire Vine Set', ar: 'طقم أزرق بتصميم الغصن', price: 120, img: U + 'd2a77fc92f257c05ca04e317daf015a1.jpg', pos: '50% 50%', ratio: '3 / 4' },
+{ id: 'b1', cat: 'bracelets', en: 'Crystal Vine Bracelet', ar: 'سوار كريستال بتصميم الغصن', price: 120, img: U + '82b2278407a5898c667d8d64295c01d8.jpg', pos: '50% 50%', ratio: '1 / 1' },
+{ id: 'b2', cat: 'bracelets', en: 'Rainbow Halo Bracelet', ar: 'سوار الأحجار الملونة', price: 120, img: U + '3ba773abf2d4a7504006eb4f87befa1d.jpg', pos: '50% 35%', ratio: '1 / 1' },
+{ id: 'b3', cat: 'bracelets', en: 'Heart Charm Bracelet', ar: 'سوار القلوب', price: 120, img: U + 'b7ae63391e48efa3862c80727b426c18.jpg', pos: '50% 57%', ratio: '1 / 1' },
+{ id: 'b4', cat: 'bracelets', en: 'Rose Bud Bracelet', ar: 'سوار الوردة', price: 120, img: U + '6c56ab836e839441b4a6b053c2f6efa2.jpg', pos: '50% 60%', ratio: '1 / 1' },
+{ id: 'r1', cat: 'rings', en: 'Heart Row Rings', ar: 'خواتم صف القلوب', price: 70, img: U + '934241f612dbebdc96c9c06b72de0d1c.jpg', pos: '50% 40%', ratio: '3 / 4' }
+];
+const CATS = ['earrings', 'necklaces', 'bracelets', 'rings'];
+const COVER = { earrings: ['e1', '50% 55%'], necklaces: ['n2', '50% 50%'], bracelets: ['b3', '50% 57%'], rings: ['r1', '50% 40%'] };
+
+const fmt = (n) => (ar ? Number(n).toLocaleString('ar-EG') : String(n));
+const money = (n) => (ar ? fmt(n) + ' ج.م' : n + ' L.E.');
+const scrollTop = () => { try { window.scrollTo(0, 0); } catch (e) {} };
+const go = (v, c) => () => this.setState({ view: v, cat: c || cat, showError: false }, scrollTop);
+const change = (id, d) => () => this.setState((st) => {
+const c = Object.assign({}, st.cart || {});
+const q = (c[id] || 0) + d;
+if (q <= 0) { delete c[id]; } else { c[id] = q; }
+return { cart: c };
+});
+const scrollTo = (id) => () => {
+const run = () => { try { const el = document.getElementById(id); if (el) { el.scrollIntoView({ behavior: 'smooth' }); } } catch (e) {} };
+if (view !== 'home') { this.setState({ view: 'home' }, run); } else { run(); }
+};
+
+const card = (p) => {
+const q = cart[p.id] || 0;
+return {
+id: p.id, name: ar ? p.ar : p.en, img: p.img, pos: p.pos, ratio: p.ratio, price: money(p.price),
+inCart: q > 0, notInCart: q === 0, qtyLabel: fmt(q),
+add: change(p.id, 1), inc: change(p.id, 1), dec: change(p.id, -1)
+};
+};
+
+const lineItems = P.filter((p) => (cart[p.id] || 0) > 0);
+const cartCount = lineItems.reduce((n, p) => n + cart[p.id], 0);
+const total = lineItems.reduce((n, p) => n + p.price * cart[p.id], 0);
+
+const name = s.fName || '';
+const phone = s.fPhone || '';
+const address = s.fAddress || '';
+const notes = s.fNotes || '';
+
+const orderLines = lineItems.map((p) => '- ' + cart[p.id] + ' × ' + p.en + ' (' + (p.price * cart[p.id]) + ' ج.م)\n  الصورة: ' + abs(p.img)).join('\n');
+const orderText = 'طلب جديد من موقع LIORA\n\nالاسم: ' + name + '\nالتليفون: ' + phone + '\nالعنوان: ' + address + (notes ? '\nملاحظات: ' + notes : '') + '\n\nالطلبات:\n' + orderLines + '\n\nالإجمالي: ' + total + ' ج.م';
+const waLink = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(orderText);
+
+const catFirst = P.find((p) => p.cat === cat);
+
+return {
+dir: ar ? 'rtl' : 'ltr',
+t: t,
+isHome: view === 'home',
+isCat: view === 'cat',
+isCart: view === 'cart',
+isDone: view === 'done',
+goHome: go('home'),
+goCart: go('cart'),
+toggleLang: () => this.setState({ lang: ar ? 'en' : 'ar' }),
+scrollFeatured: scrollTo('featured-anchor'),
+scrollPieces: scrollTo('pieces-anchor'),
+nav: [{ label: t.home, cls: view === 'home' ? 'navbtn on' : 'navbtn', go: go('home') }].concat(
+CATS.map((c) => ({ label: t[c], cls: view === 'cat' && cat === c ? 'navbtn on' : 'navbtn', go: go('cat', c) }))
+),
+covers: CATS.map((c) => {
+const p = P.find((x) => x.id === COVER[c][0]);
+return { title: t[c], img: p.img, pos: COVER[c][1], go: go('cat', c) };
+}),
+featured: ['e1', 'n2', 'b3', 'r1'].map((id) => card(P.find((p) => p.id === id))),
+catTitle: t[cat],
+catIntro: ar ? 'كل قطعة بـ ' + money(catFirst.price) + '.' : 'Every piece is ' + money(catFirst.price) + '.',
+catItems: P.filter((p) => p.cat === cat).map(card),
+cartCount: fmt(cartCount),
+hasItems: cartCount > 0,
+emptyCart: cartCount === 0,
+lines: lineItems.map((p) => ({
+name: ar ? p.ar : p.en, img: p.img, unit: money(p.price), qtyLabel: fmt(cart[p.id]), lineTotal: money(p.price * cart[p.id]),
+inc: change(p.id, 1), dec: change(p.id, -1), remove: change(p.id, -cart[p.id])
+})),
+totalText: money(total),
+fName: name, fPhone: phone, fAddress: address, fNotes: notes,
+onName: (e) => this.setState({ fName: e.target.value }),
+onPhone: (e) => this.setState({ fPhone: e.target.value }),
+onAddress: (e) => this.setState({ fAddress: e.target.value }),
+onNotes: (e) => this.setState({ fNotes: e.target.value }),
+showError: !!s.showError,
+doneTitle: s.sent ? t.sentTitle : t.doneTitle,
+doneText: s.sent ? t.sentText : t.doneText,
+notSent: !s.sent,
+completeLabel: s.sending ? t.sending : t.complete,
+placeOrder: () => {
+const ok = name.trim() && address.trim() && phone.replace(/\D/g, '').length >= 8;
+if (!ok) { this.setState({ showError: true }); return; }
+if (s.sending) { return; }
+this.setState({ sending: true, showError: false });
+const payload = { name: name.trim(), phone: phone.trim(), address: address.trim(), notes: notes.trim(), items: lineItems.map((p) => ({ id: p.id, qty: cart[p.id] })) };
+fetch('/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+.then((r) => r.json().then((j) => !!(r.ok && j && j.ok), () => false), () => false)
+.then((sent) => this.setState({ sending: false, sent: sent, view: 'done', copied: false }, scrollTop));
+},
+orderText: orderText,
+waLink: waLink,
+copyLabel: s.copied ? t.copied : t.copyOrder,
+copyOrder: () => {
+try {
+navigator.clipboard.writeText(orderText).then(() => this.setState({ copied: true }), () => {});
+} catch (e) {}
+},
+newOrder: () => this.setState({ view: 'home', cart: {}, fName: '', fPhone: '', fAddress: '', fNotes: '', copied: false, sent: false }, scrollTop)
+};
 }
 }
 </script>
